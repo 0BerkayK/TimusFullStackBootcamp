@@ -368,5 +368,226 @@ console.log(user1)
 
 
 ```
+17) 2 elemanlı bir objenin key ve value değerlerinin karakter sayısı ile 2 farklı döngü
+methodu kullanarak yeni bir obje oluşturunuz
+
+```JavaScript
 
 
+```
+    
+
+
+
+18) Cookie, local storage ve session storage farkını tablo yapınız
+
+<table style="width:100%">
+  <tr>
+    <th>Features</th>
+    <th>Cookies</th>
+    <th>Localstoreage</th>
+    <th>sessionStorage</th>
+  </tr>
+  <tr>
+    <td>Maksimum Data Size</td>
+    <td>4kB</td>
+    <td>5 MB</td>
+    <td>5 MB</td>
+  </tr>
+  <tr>
+    <td>Blockable by users</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+    <tr>
+    <td>Auto expire</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+ <tr>
+    <td>Supported Data Types</td>
+    <td>String Only</td>
+    <td>String Only</td>
+    <td>String Only</td>
+  </tr>
+  <tr>
+    <td>Browser Support</td>
+    <td>Very High</td>
+    <td>Very High</td>
+    <td>Very High</td>
+  </tr>
+  <tr>
+    <td>Accessible Server Side</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+    <tr>
+    <td>Data Transferred on every HTTP request</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+ <tr>
+    <td>Editable by users</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Supported on SSL</td>
+    <td>Yes</td>
+    <td>n/a</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td>Can be accessed on</td>
+    <td>Server-Side & Client-Side</td>
+    <td>Client-Side</td>
+    <td>Client-Side</td>
+  </tr>
+    <tr>
+    <td>Clearing/Deleting</td>
+    <td>PHP,JS & automatic</td>
+    <td>JS only</td>
+    <td>JS & automatic</td>
+  </tr>
+ <tr>
+    <td>Lifetime</td>
+    <td>as specified</td>
+    <td>till deleted</td>
+    <td>till tab is closed</td>
+  </tr>
+   <tr>
+    <td>Secure Data storeage</td>
+    <td>no</td>
+    <td>no</td>
+    <td>no</td>
+  </tr>
+  
+</table>
+
+19) asenkron ve senkron işlem farkı nedir
+
+- Senkron programlamada bir fonksiyon bitmeden diğeri çalışmaya başlamaz yani birbirlerini beklerler bekleyen fonksiyonun cevabı dönmeden diğerine geçilmez. Fakat asenkron fonksiyonlar aynı anda çalışmaya başlarlar ve birbirlerinin sonucunu beklemeden çalışmaya devam ederler. Hangisinin sonucu önce çıkarsa o sonuç gösterilir. Javascript’in çalışma mantığı single-thread şeklindedir ve asenkron çalışır. Yani bir satırı okuyup çıktısını bekleyip diğer satıra geçmez. Her bir satırı okur ve belirli bir sıraya yerleştirir. 
+
+20) promise nedir ve neden ihtiyaç duyarız
+
+- Promise, asenkron işlemleri yönetmek için kullanılan bir araçtır. Bir olay meydana geldikten sonra yürütülecek kodu yazılabilir, ancak diğer kodun yürütülmesini engellenemez. Promise, henüz mümkün olmayan ama gelecekte bir noktada mevcut olacak bir değeri temsil eder.Promise, callback'leri kullanmaktan daha yapılandırılmış ve tahmin edilebilir bir şekilde asenkron işlemleri ele almanın bir yoludur. Asenkron bir işlemin tamamlandığında çağrılacak callback'leri kaydetmek için bir yol sağlar ve aynı zamanda işlem sırasında oluşabilecek hataların nasıl ele alınacağını da sağlar.
+
+Bir Promise, üç duruma sahiptir:
+
+- Pending (Beklemede): İlk durum, tamamlanmamış veya reddedilmemiş.
+- Fulfilled (Tamamlanmış): İşlemin başarıyla tamamlandığı anlamına gelir.
+- Rejected (Reddedilmiş): İşlemin başarısız olduğu anlamına gelir.
+
+Bir Promise, tamamlandı veya reddedildi ise "settled" olarak adlandırılır.
+Promise, iki ana yöntem sunar:
+then: Bu yöntem, Promise'nin tamamlandığında çağrılacak bir callback'i kaydetmek için kullanılır. Callback, Promise'nin tamamlanma nedeni olan değerle çağrılır.
+catch: Bu yöntem, Promise'nin reddedildiğinde çağrılacak bir callback'i kaydetmek için kullanılır. Callback, Promise'nin reddedilme nedeni olan hata ile çağrılır.
+
+//Array Questions//
+
+//var dolap = ["Shirt", "Pant", "TShirt"];
+
+//1)
+
+// dolap.pop()
+
+// console.log(dolap)
+
+// Output  (2) ['Shirt', 'Pant']
+
+//2)
+
+//dolap.splice(0,1,"Hat")
+
+//console.log(dolap)
+
+// Output  ['Hat', 'Pant', 'TShirt']
+
+//3)
+
+//let result = Array.isArray(dolap)
+
+//console.log(result)
+
+// Output true
+
+//4)
+
+//console.log(dolap.includes("Pant"))  // Output true
+
+//console.log(dolap.some((n) => n === "Pant"))  // Output true
+
+//console.log(dolap.find((item) => item === "Pant") !== undefined)
+
+//5)
+
+// var dolap = ["Shirt", "Pant", "TShirt"];
+
+//function sumOfCharacters() {
+
+//  let result = dolap.map(eleman => eleman.length).reduce((acc,cur) => acc+cur)
+
+//  return result
+//}
+
+//console.log(sumOfCharacters(dolap))
+
+//6)
+
+//console.log(dolap);
+
+//let Arr = [];
+//for (let i = 0; i < dolap.length; i++) {
+// Arr.push(dolap[i].toUpperCase());
+//}
+
+//console.log(Arr); // Output ['SHIRT', 'PANT', 'TSHIRT']
+
+/*let Arr2 = [];
+
+let i = 0;
+
+while ((i < dolap.length)) {
+
+  Arr2[i] = dolap[i].toString().toUpperCase();
+
+  i++;
+}
+
+console.log(Arr2);  // Output ['SHIRT', 'PANT', 'TSHIRT'] */
+
+/*let Arr3 = [];
+
+let i = 0;
+
+do {
+  Arr3[i] = dolap[i].toUpperCase();
+  i++;
+} while (i < dolap.length);
+
+
+console.log(Arr3);*/ // Output ['SHIRT', 'PANT', 'TSHIRT']
+
+//7)
+
+//let converted  = Object.assign({}, dolap); // {0:"a", 1:"b", 2:"c"}
+
+//console.log(converted)  // Output {0: 'Shirt', 1: 'Pant', 2: 'TShirt'}
+
+//8)
+
+/*
+splice() => Arrayden çıkarıalan elemanları döndürür.
+            Orjinal arrayi değiştirir.
+            Arraye yeni eleman eklenebilir.
+    
+slice() =>  Arrayden seçilen elemanları döndürür.
+            Orjinal arrayi değiştirmek.
+            Arraye yeni eleman eklenemez  .
+
+*/
