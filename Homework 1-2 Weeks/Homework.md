@@ -494,38 +494,52 @@ catch: Bu yöntem, Promise'nin reddedildiğinde çağrılacak bir callback'i kay
 
 //1)
 
+
+```JavaScript
 // dolap.pop()
 
 // console.log(dolap)
 
 // Output  (2) ['Shirt', 'Pant']
 
-//2)
+```
 
+
+//2)
+```JavaScript
 //dolap.splice(0,1,"Hat")
 
 //console.log(dolap)
 
 // Output  ['Hat', 'Pant', 'TShirt']
 
-//3)
+```
 
+
+//3)
+```JavaScript
 //let result = Array.isArray(dolap)
 
 //console.log(result)
 
 // Output true
 
+```
+
+
 //4)
+```JavaScript
 
 //console.log(dolap.includes("Pant"))  // Output true
 
 //console.log(dolap.some((n) => n === "Pant"))  // Output true
 
 //console.log(dolap.find((item) => item === "Pant") !== undefined)
+```
+
 
 //5)
-
+```JavaScript
 // var dolap = ["Shirt", "Pant", "TShirt"];
 
 //function sumOfCharacters() {
@@ -537,8 +551,11 @@ catch: Bu yöntem, Promise'nin reddedildiğinde çağrılacak bir callback'i kay
 
 //console.log(sumOfCharacters(dolap))
 
-//6)
+```
 
+
+//6)
+```JavaScript
 //console.log(dolap);
 
 //let Arr = [];
@@ -573,15 +590,20 @@ do {
 
 console.log(Arr3);*/ // Output ['SHIRT', 'PANT', 'TSHIRT']
 
-//7)
+```
 
+
+//7)
+```JavaScript
 //let converted  = Object.assign({}, dolap); // {0:"a", 1:"b", 2:"c"}
 
 //console.log(converted)  // Output {0: 'Shirt', 1: 'Pant', 2: 'TShirt'}
 
-//8)
+```
 
-/*
+
+//8)
+```JavaScript
 splice() => Arrayden çıkarıalan elemanları döndürür.
             Orjinal arrayi değiştirir.
             Arraye yeni eleman eklenebilir.
@@ -590,4 +612,159 @@ slice() =>  Arrayden seçilen elemanları döndürür.
             Orjinal arrayi değiştirmek.
             Arraye yeni eleman eklenemez  .
 
-*/
+```
+
+1)
+```JavaScript
+const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8, 6, 10];
+
+
+const findRepeatedNumbers = (arr) =>
+arr.filter((number, element) => arr.indexOf(number) !== element);
+const repeatedNumbers = findRepeatedNumbers(arr);
+console.log(repeatedNumbers);
+
+```
+
+2)  
+```JavaScript
+const removedArray = [...new Set(arr)]
+
+console.log(removedArray) // 1.Option
+
+
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8, 6, 10];
+
+const removedArray = arr.filter((value,index,self) => {
+
+  return self.indexOf(value)===index;
+})
+
+console.log(removedArray)  // 2.Option
+
+```
+3)
+
+```JavaScript
+const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8, 6, 10];
+
+console.log(Math.max(...arr))
+
+console.log(Math.min(...arr))
+
+const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+
+console.log(max)
+
+const min = arr.reduce((a, b) => Math.min(a, b));
+
+console.log(min)
+
+```
+
+
+```JavaScript
+// Bu kodun çıktısı nedir neden ?
+function job() {
+return new Promise(function(resolve, reject) {
+reject();
+});
+}
+let promise = job();
+promise
+.then(function() {
+console.log('Success 1');
+})
+.then(function() {
+console.log('Success 2');
+Ödev 3
+})
+.then(function() {
+console.log('Success 3');
+})
+.catch(function() {
+console.log('Error 1');
+})
+.then(function() {
+console.log('Success 4');
+});
+
+
+```
+
+- Promise nesnesi Resolve ve Reject adında iki tane parametre alır 
+ve olumlu durumlarda Resolve ile belirtilen işlemlerin, olumsuz durumlarda da Reject ile 
+belirtilen işlemlerin yapılacağına dair güvence verir. 
+Promise yapısı olumlu sonuçları .then(), olumsuz sonuçları da .catch() ile karşılar.
+
+İlk durumda fonksiyonun içinde reject () olduğu için reject() durumunda catch() bloğu çalışır
+
+Konsolda Error 1 yazısını görürüz.
+
+Sonrasında ise catch() tamamlandığı için ona bağlı olan en sondaki .then() bloğunu çalışır.
+
+Konsolda Success 4 yazısını görürüz
+
+
+```JavaScript
+// Bu kodun çıktısı nedir neden ?
+function job(state) {
+return new Promise(function(resolve, reject) {
+if (state) {
+resolve('success');
+} else {
+reject('error');
+}
+});
+}
+let promise = job(true);
+promise
+.then(function(data) {
+console.log(data);
+return job(true);
+})
+.then(function(data) {
+if (data !== 'victory') {
+throw 'Defeat';
+}
+return job(true);
+})
+.then(function(data) {
+console.log(data);
+})
+.catch(function(error) {
+console.log(error);
+return job(false);
+})
+.then(function(data) {
+Ödev 4
+console.log(data);
+return job(true);
+})
+.catch(function(error) {
+console.log(error);
+return 'Error caught';
+})
+.then(function(data) {
+console.log(data);
+return new Error('test');
+})
+.then(function(data) {
+console.log('Success:', data.message);
+})
+.catch(function(data) {
+console.log('Error:', data.message);
+});
+
+
+```
+
+- job fonksiyonu gelen state e göre resolve ve reject döndürür. 
+  True değerinde resolve, False değerinde reject döndürür.
+
+ // 1.Adımda state true olarak fonksiyona gider ve konsolda=> "success" yazar ve diğer then zincirine true return olur.
+ // 2.Adımda return edilen değer "victory" eşit olmadığı için konsolda => "Defeat" yazılır. devamında ise ilk catch bloğu çalışır.
+ // 3.Adımda fonksiyondaki else bloğuna gider ve konsolda => "error" yazılır. bu işlemden sonra diğer then zincirine false olarak return olur
+ // 4.Adımda false döndüğü için diğer catch bloğuna işlem gönderilir ve ekranda => "Error caught" yazılır. diğer then bloğuna geçer burada ise yeni error nesnesi oluşturur.
+ // 5.Adımda ise son then bloğu çalışır ekrana "Success : test" yazar. Burda test yazmasının sebebi bir önceki then bloğunda ("test") adında yeni bir nesne tanımlamamızdır.
