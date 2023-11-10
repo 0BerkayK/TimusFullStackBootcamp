@@ -373,6 +373,29 @@ methodu kullanarak yeni bir obje oluşturunuz
 
 ```JavaScript
 
+  let object = { 
+  name:"Berkay",
+  surname:"Korcum"
+}
+
+
+
+Object.keys(object).forEach(element => {
+  
+   object.name= element.length.toString()
+      
+});
+
+console.log(object)  //  {name: '7', surname: 'Korcum'}
+
+let array =Object.values(object)
+
+for (let i = 0; i < array.length; i++) {
+  
+   object.surname=array[i].length
+}
+
+console.log(object)    // {name: '7', surname: 6}
 
 ```
     
